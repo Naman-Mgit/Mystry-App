@@ -1,6 +1,6 @@
 import {z} from "zod";
 
-const usernameValidation=z
+export const usernameValidation=z
     .string()
     .min(2,"Username must be atleast 2 charachters")
     .max(20,"Username must not be more than 20")

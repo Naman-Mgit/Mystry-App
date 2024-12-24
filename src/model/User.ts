@@ -40,7 +40,7 @@ const UserSchema:mongoose.Schema<User>=new mongoose.Schema({
         type:String,
         required:[true,"Email is required"],
         unique:true,
-        match:[/a-zA-Z0-9._%+-/,"Enter a valid email address"],
+        match:[/.+\@.+\..+/,"Enter a valid email address"],
         lowercase:true,
     },
     password:{

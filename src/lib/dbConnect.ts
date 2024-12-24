@@ -5,14 +5,16 @@ type ConnectionObject={
 }
 const connection:ConnectionObject={}
 
+console.log(process.env.MONGODB_URI);
 async function dbConnect():Promise<void>{
     if(connection.isConnected){
         console.log("Database is alredy connected")
         return;
     }
     try {
+       console.log(process.env.MONGODB_URI);
        const Db=await mongoose.connect(process.env.MONGODB_URI||"");
-       console.log(Db)
+       
        console.log(Db.connections);
        connection.isConnected=Db.connections[0].readyState;
 
