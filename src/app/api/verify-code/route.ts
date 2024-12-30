@@ -9,23 +9,23 @@ const VerifycodeQuerySchema=z.object({
 export async function POST(request:Request) {
     await dbConnect();
     try {
-        const {searchParams}=new URL(request.url)
-        // console.log(searchParams.get('verifyCode'))
-        const queryParam={
-             verifyCode:searchParams.get('verifyCode')
-        }
-        const result=VerifycodeQuerySchema.safeParse(queryParam)
-        console.log(result);
-        if(!result.success){
-          const verifycodeErrors=result.error.format().verifyCode?._errors 
-                     || []
-          return Response.json({
-               success:false,
-               message:verifycodeErrors.length>0?verifycodeErrors.join(',')
-                  :'Invalid query Parameters'
-          },{status:400})
-        }
         const {username,code}=await request.json();
+       
+        // console.log(searchParams.get('verifyCode'))
+        // const queryParam={
+        //      verifyCode:code
+        // }
+        // const result=VerifycodeQuerySchema.safeParse(queryParam)
+        // console.log(result);
+        // if(!result.success){
+        //   const verifycodeErrors=result.error.format().verifyCode?._errors 
+        //              || []
+        //   return Response.json({
+        //        success:false,
+        //        message:verifycodeErrors.length>0?verifycodeErrors.join(',')
+        //           :'Invalid query Parameters'
+        //   },{status:400})
+        // }
         const decodedUsername=decodeURIComponent(username)
         const user=await UserModel.findOne({username:decodedUsername});
         if(!user){

@@ -77,7 +77,6 @@ const page = () => {
                  description:response.data.message,
                  variant:"destructive"
               })
-              
           }
         }catch(error) {
            console.error("Error in signup of user",error)
