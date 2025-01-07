@@ -36,7 +36,7 @@ const MessageCard = ({message,onMessageDelete}:MessageCardprops) => {
              title:response.data.message
           })
           onMessageDelete(message._id as string);
-  }
+  }  
   return (
     <Card>
        <CardHeader>
